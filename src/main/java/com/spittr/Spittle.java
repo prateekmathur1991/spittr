@@ -23,6 +23,17 @@ public class Spittle {
 		this.longitude = longitude;
 		this.latitude = latitude;
 	}
+	
+	// Need this one temporarily to support the findOne operation in SpittleRepository 
+	// until I connect this application to a database using Hibernate
+	public Spittle(Long id)	{
+		this.id = id;
+		this.message = "Hello";
+		this.time = new Date();
+		this.longitude = null;
+		this.latitude = null;
+	}
+	
 
 	public Long getId() {
 		return id;
@@ -35,6 +46,14 @@ public class Spittle {
 	public Date getTime() {
 		return time;
 	}
+	
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
 
 	@Override
 	public int hashCode() {
@@ -45,14 +64,5 @@ public class Spittle {
 	public boolean equals(Object obj) {
 		return EqualsBuilder.reflectionEquals(this, obj, "id", "time");
 	}
-
-	public Double getLatitude() {
-		return latitude;
-	}
-
-	public Double getLongitude() {
-		return longitude;
-	}
-	
 	
 }
