@@ -12,4 +12,7 @@ public interface SpittleRepository {
 	
 	// Retrieves a single Spittle
 	Spittle findOne(long spittleId);
+	
+	// Persists a created Spittle
+	void save(Spittle spittle);
 }

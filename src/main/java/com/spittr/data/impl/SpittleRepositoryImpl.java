@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import com.spittr.Spittle;
 import com.spittr.data.SpittleRepository;
 
-@Component
 public class SpittleRepositoryImpl implements SpittleRepository {
 
 	@Override
@@ -27,6 +24,11 @@ public class SpittleRepositoryImpl implements SpittleRepository {
 	@Override
 	public Spittle findOne(long spittleId) {
 		return new Spittle(Long.valueOf(spittleId));
+	}
+	
+	@Override
+	public void save(Spittle spittle)	{
+		// This method will persist the spittle
 	}
 
 }

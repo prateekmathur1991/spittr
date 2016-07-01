@@ -2,15 +2,46 @@ package com.spittr;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+// We are using the annotation based configuration for Hibernate here.
+
+// The @Entity annotation represents that this POJO is an entity that can be
+// persited across the database.
+
+// The @Table annotation specifies the table name to which this entity needs to be saved.
+
+@Entity
+@Table(name="spittle")
 public class Spittle {
+	
+	@Id
+	@GeneratedValue
 	private final Long id;
+	
+	@Column(name="message")
 	private final String message;
+	
+	@Column(name="time")
 	private final Date time;
+	
+	@Column(name="latitude")
 	private Double latitude;
+	
+	@Column(name="longitude")
 	private Double longitude;
+	
+	// Creating default constructor. Spring (or Hibernate) will be needing it
+	public Spittle() {
+		this(null, null, null, null);
+	}
 	
 	public Spittle(String message, Date time)	{
 		this(message, time, null, null);
@@ -38,7 +69,7 @@ public class Spittle {
 	public Long getId() {
 		return id;
 	}
-
+	
 	public String getMessage() {
 		return message;
 	}
@@ -64,5 +95,4 @@ public class Spittle {
 	public boolean equals(Object obj) {
 		return EqualsBuilder.reflectionEquals(this, obj, "id", "time");
 	}
-	
 }
