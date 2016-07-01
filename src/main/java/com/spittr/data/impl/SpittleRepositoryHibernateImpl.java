@@ -26,10 +26,23 @@ public class SpittleRepositoryHibernateImpl implements SpittleRepository {
 	@Override
 	public List<Spittle> findSpittles(long max, int count) {
 		List<Spittle> allSpitlles = null;
+		Transaction tx = null;
 		
 		try (Session session = sessionFactory.getCurrentSession()) {
 			
+			// Begin Transaction
+			tx = session.beginTransaction();
+			
+			allSpitlles = session.createQuery("from spittles").list();
+			
+			// End Transaction
+			tx.commit();
 		} catch (Exception e) {
+			if (null != tx)	{
+				tx.rollback();
+				tx = null;
+			}
+			
 			e.printStackTrace();
 		}
 		
@@ -55,6 +68,8 @@ public class SpittleRepositoryHibernateImpl implements SpittleRepository {
 				tx.rollback();
 				tx = null;
 			}
+			
+			e.printStackTrace();
 		}
 		
 		return spittle;

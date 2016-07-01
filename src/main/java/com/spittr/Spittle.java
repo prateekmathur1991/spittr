@@ -19,7 +19,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 // The @Table annotation specifies the table name to which this entity needs to be saved.
 
 @Entity
-@Table(name="spittle")
+@Table(name="spittles")
 public class Spittle {
 	
 	@Id
@@ -65,7 +65,6 @@ public class Spittle {
 		this.latitude = null;
 	}
 	
-
 	public Long getId() {
 		return id;
 	}
