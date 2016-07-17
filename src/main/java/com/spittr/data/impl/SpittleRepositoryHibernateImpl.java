@@ -12,6 +12,10 @@ import com.spittr.Spittle;
 import com.spittr.data.SpittleRepository;
 
 // Provides SpittleRepository options using Hibernate
+
+// TODO
+// Need to work on Hibernate Integration for this project, as it is not
+// working as of now
 @Component
 public class SpittleRepositoryHibernateImpl implements SpittleRepository {
 
